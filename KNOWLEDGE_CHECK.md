@@ -16,6 +16,8 @@ Suppose your instance is running and has a public IP address, but `ssh` cannot c
 
 ...
 
+AWS Console > EC2 Console > Security Groups > launch-wizard-1
+
 ## 2. Lambda: why didn't my function run?
 
 Suppose you uploaded a new book to your bucket, but several minutes later MongoDB still has no document for it. Maybe the function never started, because its trigger is missing or wrong.
@@ -28,6 +30,8 @@ Suppose you uploaded a new book to your bucket, but several minutes later MongoD
 
 ...
 
+AWS Console > Lambda > Event Functions > book-analyzer-dev-analyze_new_book > Function Overview
+
 ## 3. Lambda: where do I find the error?
 
 Suppose the function did start, but MongoDB still has no document for the book. Then the function failed while it ran, and its error message is in its log.
@@ -37,6 +41,8 @@ Suppose the function did start, but MongoDB still has no document for the book. 
 *Hint:* [Part 2, Step 7](README.md#step-7-upload-a-new-book) in the README, and the class demo [A Lambda function in the AWS Console](https://github.com/ksiller/DS2022/blob/main/demos/07-lambda/README.md), step [7. Check the CloudWatch logs](https://github.com/ksiller/DS2022/blob/main/demos/07-lambda/README.md#7-check-the-cloudwatch-logs).
 
 **Your answer:** Which path did you take in the console (service → page → tab)?
+
+AWS Console > Lambda > Event Functions > book-analyzer-dev-analyze_new_book > Monitor > ViewCloudWatch logs > log streams
 
 ...
 
@@ -55,3 +61,5 @@ For comparison, typical times in this lab:
 **Your answer:**
 
 ...
+
+EC2 for Case A and Lambda for Case B. EC2 is suitable for running large batches of jobs, as it's charged by runtime, and I can terminate it once I'm done. Lambda is suitable for random small tasks as it's triggered by certain events and charged by runs. It can be initiated whenever a new request comes in. EC2 is more efficient whereas Lambda is more versatile. `
